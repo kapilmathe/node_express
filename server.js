@@ -4,7 +4,8 @@ var app = express()
 var http = require('http').Server(app)
 var io = require('socket.io')(http)
 var mongoose = require('mongoose')
-
+var util = require('util')
+var fs = require('fs')
 
 app.use(express.static(__dirname))
 app.use(bodyParser.json())
@@ -18,12 +19,16 @@ var Message = mongoose.model('Message', {
 })
 
 
-// var messages = [
-//     {name: 'Kapil', message: 'Hiii'},
-//     {name: 'Mathe', message: 'FFFi'}
-// ]
+app.get('/list_messages', function(req, res) {
+    util.log("get method for rest call for fetching messages")
+    Message.find({}, (err, messages)=>{
+        res.send(messages)
+    })
+})
+
 
 app.get('/messages', (req, res)=> {
+    util.log("get method for fetching messages")
     Message.find({}, (err, messages)=>{
         res.send(messages)
     })
