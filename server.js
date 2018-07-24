@@ -6,6 +6,7 @@ var io = require('socket.io')(http)
 var mongoose = require('mongoose')
 var util = require('util')
 var fs = require('fs')
+port_number = 3000
 
 app.use(express.static(__dirname))
 app.use(bodyParser.json())
@@ -19,13 +20,22 @@ var Message = mongoose.model('Message', {
 })
 
 
-app.get('/list_messages', function(req, res) {
-    util.log("get method for rest call for fetching messages")
-    Message.find({}, (err, messages)=>{
-        res.send(messages)
-    })
-})
+// app.get('/list_messages', function(req, res) {
+//     util.log("get method for rest call for fetching messages")
+//     Message.find({}, (err, messages)=>{
+//         res.send(messages)
+//     })
+// })
 
+
+// app.post('/add_messages', (req, res)=>{
+//     util.log("post add_message rest api call")
+//     util.log(req)
+//     // var message = new Message(JSON.parse(req.body))
+//     res.sendStatus(200)
+// })
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 app.get('/messages', (req, res)=> {
     util.log("get method for fetching messages")
@@ -40,7 +50,7 @@ app.post('/messages', (req, res)=> {
 
     message.save((err)=>{
         if(err)
-            sendStatus(500)
+            res.sendStatus(500)
 
         Message.findOne({message: 'badword'}, (err, censored)=>{
             if(censored){
@@ -66,6 +76,6 @@ mongoose.connect(dburl, {useNewUrlParser: true},(err)=>{
     console.log('mongo db connection', err)
 })
 
-server = http.listen(3000, ()=> {
+server = http.listen(port_number, ()=> {
     console.log('server is listening on port', server.address().port)
 })

@@ -7,11 +7,19 @@
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Kapil Mathe",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3"
   },
   "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kapilmathe/node_express.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kapilmathe/node_express/issues"
+  },
+  "homepage": "https://github.com/kapilmathe/node_express#readme",
   "description": ""
 }

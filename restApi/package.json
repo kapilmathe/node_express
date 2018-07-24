@@ -1,0 +1,21 @@
+{
+  "name": "rest_api",
+  "version": "1.0.0",
+  "description": "RESTful web API Design with Node.js 10 - 3rd Edition",
+  "main": "main.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "nodeunit"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.16.3",
+    "http": "0.0.0",
+    "install": "^0.12.1",
+    "nodeunit": "^0.11.3",
+    "sinon": "^6.1.4"
+  }
+}
